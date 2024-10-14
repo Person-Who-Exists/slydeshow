@@ -1,11 +1,11 @@
 {
-	"name": "Example show", // Provides a name to the viewer
-	"type": "canvas", // Changes the rendering mode for the presentation [canvas, webgl, webgpu]
+	"name": "Example show",					// Provides a name to the viewer
+	"type": "canvas",						// Changes the rendering mode for the presentation [canvas, webgl, webgpu]
 	"1": { // First slide
-		"object-one": { // "object-one" signifies the element/triggers id
-			"type": "trigger_delay", // Specifies the type for the element/trigger
-			"delay": 5000, // Specifies delay
-			"target": ["object-two"] // Specifies the element that it will trigger
+		"object-one": {						// "object-one" signifies the element/triggers id
+			"type": "trigger_delay",		// Specifies the type for the element/trigger
+			"delay": 5000,					// Specifies delay
+			"target": ["object-two"]		// Specifies the element that it will trigger
 		}
 	}
 }
