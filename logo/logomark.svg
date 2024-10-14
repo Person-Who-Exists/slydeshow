@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200mm"
+   height="200mm"
+   viewBox="0 0 200 200"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+   sodipodi:docname="drawing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1">Slydeshow</title>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:lockguides="true"
+     inkscape:zoom="1.1883472"
+     inkscape:cx="420.75245"
+     inkscape:cy="402.6601"
+     inkscape:window-width="1920"
+     inkscape:window-height="1004"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid11"
+       units="mm"
+       originx="377.95276"
+       originy="377.95276"
+       spacingx="0.99999999"
+       spacingy="0.99999999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0.40900301 : -0.46261246 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="200.04158 : 198.46876 : 1"
+       inkscape:persp3d-origin="100 : 66.666667 : 1"
+       id="perspective3" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#00a5ff;fill-opacity:1;stroke-width:0.264583"
+       id="rect1"
+       width="200"
+       height="200"
+       x="0.060770694"
+       y="0.27137259" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       id="path8"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="36.248627"
+       sodipodi:cy="176.46539"
+       sodipodi:r1="21.923903"
+       sodipodi:r2="10.961951"
+       sodipodi:arg1="1.0471976"
+       sodipodi:arg2="2.0943951"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 47.210577,195.45205 14.324724,176.46539 47.210579,157.47874 Z"
+       inkscape:transform-center-x="8.3333348"
+       inkscape:transform-center-y="2.878101e-06"
+       transform="matrix(1.5204105,0,0,1.9750713,-11.779461,-195.50256)" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       id="path8-2"
+       inkscape:flatsided="true"
+       sodipodi:sides="3"
+       sodipodi:cx="36.248627"
+       sodipodi:cy="176.46539"
+       sodipodi:r1="21.923903"
+       sodipodi:r2="10.961951"
+       sodipodi:arg1="1.0471976"
+       sodipodi:arg2="2.0943951"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 47.210577,195.45205 14.324724,176.46539 47.210579,157.47874 Z"
+       inkscape:transform-center-x="-8.333336"
+       inkscape:transform-center-y="4.1833407e-06"
+       transform="matrix(-1.5204105,0,1.0042778e-8,-1.9750713,211.77946,396.61508)" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       d="m 58.600332,167.87672 h 64.855848 l 20.0466,-20.0466 V 122.33995 L 124.04824,102.88541 V 72.725067 l 16.38789,-9.461552 V 32.673618 H 78.44124 L 58.462481,52.652379 v 25.065746 l 20.333822,20.333822 v 29.868993 l -18.588363,10.732 -2.671622,0.71585 z"
+       id="path13" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Slydeshow</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Person Who Exists</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
