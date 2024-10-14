@@ -1,8 +1,13 @@
+/*
+// Welcome to asynchronous hell
+// Make sure to read contribute.md if you wish to make any contributions
+*/
+
 class trigger_basic {
-	constructor(xPos, yPos, targets) {
-		this.xPos = xPos;
+	constructor(xPos = 0, yPos = 0 , targets) {	// Give them default positions because I don't wanna have to apply positions to every trigger
+		this.xPos = xPos;						// They only have a position so that they can look nice in slydeshow/designer
 		this.yPos = yPos;
-		this.targets = targets;
+		this.targets = targets;					// Is just them elements that the trigger will invoke the activate() method of
 	}
 }
 
@@ -13,35 +18,7 @@ class element_basic {
 		this.width = width;
 		this.height = height;
 		this.rotation = rotation;
-		this.content = content
-	}
-
-	getPropertyPairs() {
-		try {
-			const propertyNames = Object.getOwnPropertyNames(MyClass.prototype);
-
-			const propertyPairs = propertyNames
-				.map((propertyName) => {
-					const descriptor = Object.getOwnPropertyDescriptor(
-						MyClass.prototype,
-						propertyName,
-					);
-					if (!descriptor) return null;
-
-					const value =
-						descriptor.value !== undefined
-							? descriptor.value.call(this)
-							: descriptor.initialValue;
-					return [propertyName, value];
-				})
-				.filter((pair) => pair !== null);
-
-			return propertyPairs;
-		}
-		catch (error) {
-			console.error("Error retrieving property pairs:", error);
-			return [];
-		}
+		this.content = content;		// Content is pretty generic although is used for all elements
 	}
 }
 
@@ -49,10 +26,9 @@ class element_basic {
 // Triggers
 */
 class trigger_start extends trigger_basic {
-	// Make sure to create these last
 	constructor(xPos, yPos, targets) {
-		super(xPos, yPos, targets);
-		trigger(this.targets);
+		super(xPos, yPos, "");	// Passing an empty string because giving it that value is redundant
+		trigger(targets);		// Hopefully no race conditions because I'm starting immediately 🤞
 	}
 }
 
@@ -62,7 +38,7 @@ class trigger_delay extends trigger_basic {
 		this.delay = delay;
 	}
 	activate() {
-		setTimeout(() => {
+		setTimeout(() => {	// Why is delay in js so fucking stupid? There has to be a better way than using an anonymous function!
 			trigger(this.targets);
 		}, this.delay);
 	}
@@ -76,10 +52,10 @@ class trigger_loop extends trigger_basic {
 		this.itterations = 0;
 	}
 	activate() {
-		const intervalId = setInterval(() => {
+		const intervalId = setInterval(() => {	// Stupid fucking anonymous js functions (find better loop method)
 			if (this.iterations == this.loops) {
-				// Ensure you're using >= for inclusivity
-				clearInterval(intervalId); // Stop the interval
+												// ⚠️ This loops forever, I don't know why, but it does ⚠️
+				clearInterval(intervalId);		// Stop the interval (except that it doesn't actually work)
 				return;
 			}
 			trigger(this.targets);
@@ -96,7 +72,7 @@ class trigger_counter extends trigger_basic {
 	}
 	activate() {
 		this.counter++;
-		if (this.counter == this.activations | this.counter > this.activations) {
+		if (this.counter >= this.activations) {
 			this.counter = 0
 			this.activate(this.targets)
 		}
@@ -142,20 +118,19 @@ async function trigger(targets) {
 		if (instance && typeof instance.activate === "function") {
 			await new Promise((resolve) =>
 				setTimeout(() => {
-					// Js witchcraft?
+					// Js witchcraft? Js witchcraft.
 					instance.activate();
 					resolve();
 				}, 0),
 			);
-		} else {
-			console.error(
-				`Provided instance (${instance}) is not valid or does not have an activate method.`,
-			);
+		}
+		else {
+			console.error(`Provided instance (${instance}) is not valid or does not have an activate method.`,);
 		}
 	}
 }
 
-function createInstance(id, type, props) {
+function createInstance(id, type, props) { // No, this does not work ⚠️
 	const instance = new globalThis[type](...props);
 	globalThis[id] = instance;
 }
@@ -163,15 +138,3 @@ function createInstance(id, type, props) {
 /*
 // Rendering
 */
-class renderQueue {
-	constructor(maxItems) {
-		this.maxItems = maxItems
-		this.queue = []
-	}
-	addNewElement(id) {
-		this.queue.append(id)
-	}
-	getElements() {
-
-	}
-}
