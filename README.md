@@ -1,6 +1,4 @@
-
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
+![Logo](./logo/logomark.png)
 
 # Slydeshow
 A (in the works) system of triggers and elements that allows you to create interactive and beautifully animated slideshows
@@ -8,7 +6,7 @@ A (in the works) system of triggers and elements that allows you to create inter
 Slydeshow is made of 2 parts slydeshow itself which is a web renderer for slydeshows and slydeshow designer which is a gui app for making slydeshows
 ## Authors
 
-- [Person who exists](https://github.com/Landon-Kuehner) (Main dev)
+- [Person who exists](https://gitlab.com/PersonWhoExists) (Main dev)
 
 
 ## Installation
@@ -39,4 +37,4 @@ Please adhere to this project's `code of conduct`.
 - [ ] Add trigger_keypress
 ## Feedback
 
-If you have any feedback, make a GitHub issue or email me at Landon.kuehner@proton.me
+If you have any feedback, make a Gitlab issue

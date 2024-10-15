@@ -12,9 +12,10 @@ class trigger_basic {
 }
 
 class element_basic {
-	constructor(xPos, yPos, width, height, rotation, content) {
+	constructor(xPos, yPos, zPos, width, height, rotation, content) {
 		this.xPos = xPos;
 		this.yPos = yPos;
+		this.zPos = zPos;			// zPos is basicly css's z-index rule
 		this.width = width;
 		this.height = height;
 		this.rotation = rotation;
@@ -52,7 +53,7 @@ class trigger_loop extends trigger_basic {
 		this.itterations = 0;
 	}
 	activate() {
-		const intervalId = setInterval(() => {	// Stupid fucking anonymous js functions (find better loop method)
+		let intervalId = setInterval(() => {	// Stupid fucking anonymous js functions (find better loop method)
 			if (this.iterations == this.loops) {
 												// ⚠️ This loops forever, I don't know why, but it does ⚠️
 				clearInterval(intervalId);		// Stop the interval (except that it doesn't actually work)
@@ -83,13 +84,16 @@ class trigger_counter extends trigger_basic {
 // Elements
 */
 class element_text extends element_basic {
-	constructor(xPos, yPos, width, height, rotation, content) {
-		super(xPos, yPos, width, height, rotation, content)
+	constructor(xPos, yPos, zPos, width, height, rotation, content) {
+		super(xPos, yPos, zPos, width, height, rotation, content)
 	}
 }
 
 /*
 // Debugging
+// These should only be used for debugging as
+// they lack the features of a normal trigger
+// they may also crash a theoretical editor
 */
 class debug_log {
 	constructor(log) {
@@ -128,11 +132,6 @@ async function trigger(targets) {
 			console.error(`Provided instance (${instance}) is not valid or does not have an activate method.`,);
 		}
 	}
-}
-
-function createInstance(id, type, props) { // No, this does not work ⚠️
-	const instance = new globalThis[type](...props);
-	globalThis[id] = instance;
 }
 
 /*
