@@ -5,16 +5,14 @@
 - [ ] User input
 - [ ] Image
 - [ ] Video
-- [ ]
 - [ ] Shape
 - [ ] Line
-- [ ] Palette
 
 ## Triggers
 - [ ] Animation (See <a href = "#Animations">animations</a>)
 - [x] Start (Pulses once the slideshow is loaded)
 - [x] Delay
-- [x] ~~Delete~~
+- [x] ~~Delete~~ Cancelled in favor of the fade out animation with a time func of 1
 - [ ] Loop (Almost, loops infinitely though)
 - [ ] Counter (Activates another object after a number of activations)
 
@@ -29,20 +27,16 @@
 - [x] Make trigger_basic
 - [x] Make trigger function
 - [x] Test trigger function
-- [ ] Make instanter (creates instanced classes with their data at the top level and adds them to rendering)
+- [ ] Make instancer (creates instanced classes with their data at the top level and adds them to rendering)
 - [x] Make element_basic
 - [ ] Make all triggers
 - [ ] Make a few (basic) elements
-- [ ] Make a basic canvas renderer
-- [ ] Make a json slideshow decoder (turns a slydeshow.json file into its elements and triggers)
-- [ ] Test it out
-- [ ] Finish all planned elements
+- [ ] Make the attachment system
 - [ ] Make animation system
-- [ ] Add animations to json decoder
-- [ ] Test all animations
-- [ ] Finalize canvas renderer
-- [ ] Make slydeshow designer (with single file html exporting and serialized .json file exporting)
+- [ ] Make a basic webGL renderer
+- [ ] Make a json slideshow decoder (turns a slydeshow.json file into its elements and triggers)
+- [ ] Finish all remaining elements
+- [ ] Finalize webGL renderer
 - [ ] Release test version (to friends)
 - [ ] Fix bugs
-- [ ] Add some special elements and triggers ie: user input or control triggers
 - [ ] Release 1.0
