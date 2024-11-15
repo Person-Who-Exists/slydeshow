@@ -2,6 +2,9 @@
 // Welcome to asynchronous hell
 // Make sure to read contribute.md if you wish to make any contributions
 */
+``
+let settings = new Map()
+settings.set("tick-rate", 30)
 
 class triggerBasic {
 	constructor(xPos = 0, yPos = 0 , targets) {	// Give them default positions because I don't wanna have to apply positions to every trigger
@@ -64,18 +67,19 @@ class attachmentBasic {
 }
 
 class animationBasic {
-	constructor(xPos = 0, yPos = 0, timeFunction = "x", targets = "", end = [], concurrent = [], after = []) {
+	constructor(xPos = 0, yPos = 0, timeFunction = "x", time = 0, target = "", end = [], after = []) {
 		this.xPos = xPos;
 		this.yPos = yPos;
-		this.timeFunction = timeFunction;		// ex: x, x**2, -x**2+2x
-		this.targets = targets;
+		this.timeFunction = timeFunction;		// ex: x, x**2, -0.5x**2+2x
+		this.time = time						// This is the time (in seconds) the animation takes to complete
+		this.target = globalThis[target];
 		this.end = end;							// This is the end position of the animation
 		this.start;								// Each animation has it's own start defaults
-		this.concurrent = concurrent;			// Sets other animations to run at the same time
 		this.after = after;						// Sets other animations to run after this one
+		this.progress = 0						// Sets the starting progress for the animation timer
 	}
 
-	solveMathFunction(x) {
+	solveTime(x) {
 		try {
 			// Convert time func to a Js function
 			const func = new Function('x', `return ${this.timeFunction};`);
@@ -84,7 +88,7 @@ class animationBasic {
 			return func(x);
 		}
 		catch (error) {
-			console.error("Error solving time function:", error.message);
+			console.error(`error solving function: ${this.timeFunction}`);
 			return null;
 		}
 	}
@@ -95,8 +99,9 @@ class animationBasic {
 */
 class triggerStart extends triggerBasic {
 	constructor(xPos, yPos, targets) {
-		super(xPos, yPos, "");	// Passing an empty string because giving it that value is redundant
-		trigger(targets);		// Hopefully no race conditions because I'm starting immediately 🤞
+		super(xPos, yPos, targets);
+		// Once the renderer is finish, make it wait for that to finish
+		trigger(targets);
 	}
 }
 
@@ -117,12 +122,12 @@ class triggerLoop extends triggerBasic {
 		super(xPos, yPos, targets);
 		this.delay = delay;
 		this.loops = loops;
-		this.itterations = 0;
+		this.iterations = 0;
 	}
 	activate() {
-		let intervalId = setInterval(() => {	// Stupid fucking anonymous js functions (find better loop method)
-			if (this.iterations > this.loops) {	// ⚠️ This loops forever, I don't know why, but it does ⚠️
-				clearInterval(intervalId);		// Stop the interval (except that it doesn't actually work)
+		let intervalId = setInterval(() => {
+			if (this.iterations > this.loops) {
+				clearInterval(intervalId);
 				return;
 			}
 			trigger(this.targets);
@@ -155,6 +160,72 @@ class triggerCounter extends triggerBasic {
 class elementText extends elementBasic {
 	constructor(xPos, yPos, zPos, width, height, rotation, content, style) {
 		super(xPos, yPos, zPos, width, height, rotation, content, style);
+	}
+}
+
+/*
+// Attachments
+*/
+class attachmentBorder extends attachmentBasic {
+	constructor(content, style, parent) {
+		super(content, style, parent)
+	}
+}
+
+/*
+// Animations
+*/
+class animationTranslate extends animationBasic {
+	constructor(xPos = 0, yPos = 0, timeFunction = "x", time = 0, target = "", end = [], after = []) {
+		super(xPos = 0, yPos = 0, timeFunction = "x", time = 0, target = "", end = [], after = [])
+
+		this.start[0] = this.target.xPos;
+		this.start[1] = this.target.yPos;
+		this.progress
+	}
+	activate() {
+
+	}
+	tick() {
+		let animProgress = this.solveTime(this.progress)
+
+		this.target.xPos = (this.start[0] + (animProgress * (this.end[0] - this.start[0])))
+		this.target.yPos = (this.start[1] + (animProgress * (this.end[1] - this.start[1])))
+
+		this.progress += ((1 / settings.get("tick-rate")) * this.time)
+	}
+}
+
+class animationRotate extends animationBasic {
+	constructor(xPos = 0, yPos = 0, timeFunction = "x", time = 0, target = "", end = [], after = []) {
+		super(xPos = 0, yPos = 0, timeFunction = "x", time = 0, target = "", end = [], after = [])
+
+		this.start[0] = this.target.rotation;
+	}
+	activate() {
+		
+	}
+	tick() {
+		let animProgress = this.solveTime(this.progress)
+
+		this.target.rotation = (this.start[0] + (animProgress * (this.end[0] - this.start[0])))
+
+		this.progress += ((1 / settings.get("tick-rate")) * this.time)
+	}
+}
+
+class animationScale extends animationBasic {
+	constructor(xPos = 0, yPos = 0, timeFunction = "x", target = "", end = [], after = []) {
+		super(xPos = 0, yPos = 0, timeFunction = "x", target = "", end = [], after = [])
+
+		this.start[0] = this.target.height;
+		this.start[1] = this.target.width;
+	}
+	activate() {
+		
+	}
+	tick() {
+		
 	}
 }
 
@@ -208,6 +279,11 @@ async function trigger(targets) {
 // Rendering
 */
 
-globalThis["loop"] = new triggerLoop(1, 1, ["counter"], 1000, 10);
-globalThis["counter"] = new triggerCounter(1, 1, [""], 5, true);
-globalThis["debug"] = new debugLog("Triggers after 5 activations");
+globalThis["loop"] = new triggerLoop(1, 1, ["counter"], 100, 35);
+globalThis["counter"] = new triggerCounter(1, 1, ["debug"], 5, true);
+globalThis["debug"] = new debugLog("Triggers every 5 activations");
+
+globalThis["delay"] = new triggerDelay(1, 1, ["debugger2"], 2000)
+globalThis["debugger2"] = new debugLog("Triggers after 1/4th of a second")
+
+globalThis["starter"] = new triggerStart(1, 1, ["loop", "delay"])
