@@ -154,6 +154,30 @@ class triggerCounter extends triggerBasic {
 	}
 }
 
+class triggerPalette extends triggerBasic {
+	constructor(xPos, yPos, palette) {
+		super(xPos, yPos, []);
+
+		const parsedJson = JSON.parse(palette);
+		this.paletteDark = new Map(Object.entries(parsedJson.dark));
+		this.paletteLight = new Map(Object.entries(parsedJson.light));
+
+		this.colorState = settings.get("colorPalette");
+	}
+	getColor(type) {
+		if (this.colorState == "dark") {
+			return this.paletteDark.get(type);
+		}
+		else {
+			return this.paletteLight.get(type);
+		}
+	}
+
+	activate() {
+		this.colorState = this.colorState === "light" ? "dark" : "light";
+	}
+}
+
 /*
 // Elements
 */
@@ -203,7 +227,7 @@ class animationRotate extends animationBasic {
 		this.start[0] = this.target.rotation;
 	}
 	activate() {
-		
+
 	}
 	tick() {
 		let animProgress = this.solveTime(this.progress)
@@ -222,10 +246,10 @@ class animationScale extends animationBasic {
 		this.start[1] = this.target.width;
 	}
 	activate() {
-		
+
 	}
 	tick() {
-		
+
 	}
 }
 

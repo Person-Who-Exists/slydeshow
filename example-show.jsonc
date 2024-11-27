@@ -1,18 +1,19 @@
 {
-	"name": "Example show",					// Provides a name to the viewer
-	"type": "canvas",						// Changes the rendering mode for the presentation		[canvas, webgl, webgpu]
-	"option": {
-		"positioning_unit": "percent",		// Changes the unit by which elements are positioned	[percent, pixel]
-		"positioning_position": "center",	// Changes where elements are positioned from			[center, corner]
-		"scaling_unit": "percent",			// Changes the unit by which elements are scaled		[percent, pixel]
-		"scaling_position": "center",		// Changes where elements are scaled from				[center, corner]
-		"ticks_per_second": "30"			// Defines how many ticks/second animations run at		uInt
+	"name":"exampleShow",					// Provides a name to the viewer
+	"type":"canvas",						// Changes the rendering mode for the presentation		[canvas, webgl, webgpu]
+	"option":{
+		"positioningUnit":"percent",		// Changes the unit by which elements are positioned	[percent, pixel]
+		"positioningPosition":"center",		// Changes where elements are positioned from			[center, corner]
+		"scalingUnit":"percent",			// Changes the unit by which elements are scaled		[percent, pixel]
+		"scalingPosition":"center",			// Changes where elements are scaled from				[center, corner]
+		"ticksPerSecond":"30",				// Defines how many ticks/second animations run at		uInt
+		"colorPalette": "dark"				// Defines the starting color palette					[light, dark]
 	},
-	"1": { // First slide
-		"object_one": {						// "object-one" signifies the element/triggers id
-			"type": "triggerDelay",		// Specifies the type for the element/trigger
-			"delay": 5000,					// Specifies delay
-			"target": ["object-two"]		// Specifies the element that it will trigger
+	"1":{									//First Slide
+		"objectOne":{						// "object-one" signifies the element/triggers id
+			"type":"triggerDelay",			// Specifies the type for the element/trigger
+			"delay":5000,					// Specifies delay
+			"target":["objectTwo"]			// Specifies the element that it will trigger
 		}
 	}
 }

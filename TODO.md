@@ -5,6 +5,8 @@
 - [x] Delay
 - [x] ~~Delete~~ Cancelled in favor of the fade out animation with a time func of 1
 - [x] Loop
+- [x] Counter
+- [ ] Palette
 
 ## Elements:
 - [ ] Text element
